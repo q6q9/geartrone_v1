@@ -37,12 +37,9 @@ class RawData
 
     public function HasRightOwnerAddress(): bool
     {
-        $url_api = Yii::$app->params['apiTronGrid'];
-        $tron = new Tron();
-
-
-
-        return $this->to_address === Yii::$app->params['adminWalletAddress'] or
-            $tron->hexString2Address($this->to_address) === Yii::$app->params['adminWalletAddress'];
+        return
+            $this->to_address === Yii::$app->params['adminWalletAddressBase58']
+            or
+            $this->to_address === Yii::$app->params['adminWalletAddressHex'];
     }
 }

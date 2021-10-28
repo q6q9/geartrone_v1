@@ -26,7 +26,6 @@ class StoreCarService
     public function buyCar()
     {
         if (!$this->car) {
-
             return false;
         }
         if (!$this->userService->getUser()) {
@@ -37,13 +36,6 @@ class StoreCarService
             $this->errors = 'Данный товар уже имеется';
             return false;
         }
-
-//        if (!$this->userService->balance->has($this->car->price)) {
-//            $this->errors = 'Недостаточно денег';
-//            return false;
-//        }
-
-//        $this->userService->getUser()->TRX -= $this->car->price;
 
         $garage = Garage::findOne($this->car->garage_id);
 

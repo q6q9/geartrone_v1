@@ -52,7 +52,7 @@ return [
                 'POST api/balance/add/<money:\d+>' => 'api/balance/add',
 
                 'POST api/cars/get-transaction/<id:\d+>' => 'api/cars/get-transaction',
-                'POST api/cars/buy/<id:\d+>' => 'api/cars/buy',
+                'POST api/cars/send-sign-transaction/<id:\d+>' => 'api/cars/send-sign-transaction',
 
                 'GET api/cars/garage/<id:\d+>' => 'api/cars/garage'
             ],
