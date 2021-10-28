@@ -31,7 +31,9 @@ class UserCarService extends UserServiceBase
                 "IF (cars_users.user_id = {$this->user->id}, mobility_bonus, null) as 'mobility_bonus'",
                 'brake',
                 "IF (cars_users.user_id = {$this->user->id}, brake_bonus, null) as 'brake_bonus'",
-                "(cars_users.user_id = {$this->user->id} and cars_users.user_id IS NOT NULL) as 'has_car'"
+                "(cars_users.user_id = {$this->user->id} and cars_users.user_id IS NOT NULL) as 'has_car'",
+                'img_active',
+                'img_inactive'
             ])
             ->from('cars')
             ->leftJoin('cars_users', 'cars_users.car_id = cars.id')
@@ -48,18 +50,16 @@ class UserCarService extends UserServiceBase
                 'mobility_bonus',
                 'brake',
                 'brake_bonus',
-                'has_car'
+                'has_car',
+                'img_active',
+                'img_inactive'
             ])
             ->all();
     }
 
     public function allFromGarage(Garage $garage)
     {
-//        return $garage->getUsers()->all();
-//        return Garage::find()->all();
         $query = (new Query());
-//        return (($garage->getCars()));
-//        $queryGarage = $garage->getCars()
         return (new Query())
             ->select([
                 'cars.id',
@@ -72,7 +72,9 @@ class UserCarService extends UserServiceBase
                 "IF (cars_users.user_id = {$this->user->id}, mobility_bonus, null) as 'mobility_bonus'",
                 'brake',
                 "IF (cars_users.user_id = {$this->user->id}, brake_bonus, null) as 'brake_bonus'",
-                "(cars_users.user_id = {$this->user->id} and cars_users.user_id IS NOT NULL) as 'has_car'"
+                "(cars_users.user_id = {$this->user->id} and cars_users.user_id IS NOT NULL) as 'has_car'",
+                'img_active',
+                'img_inactive'
             ])
             ->from('cars')
             ->innerJoin('garages', 'cars.garage_id = garages.id')
@@ -81,20 +83,5 @@ class UserCarService extends UserServiceBase
                 'garages.id' => $garage->id
             ])
             ->all();
-//        return $queryGarage->modelClass;
-//        $queryGarage->modelClass = 'common\models\CarUser';
-//        return get_class($queryGarage);
-//        return ($queryGarage->all());
-
-
-//            "id": 5,
-//        "garage_id": 2,
-//        "model": "модель 1",
-//        "modification": "модификация 2",
-//        "price": 2100,
-//        "speed": 2,
-//        "mobility": 2,
-//        "brake": 3
-//            ->all();
     }
 }

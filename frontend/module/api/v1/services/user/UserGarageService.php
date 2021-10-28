@@ -16,6 +16,8 @@ class UserGarageService extends UserServiceBase
                 'name',
                 'description',
                 "(garages_users.user_id = {$this->user->id} and garages_users.user_id IS NOT NULL) as 'has_garage'",
+                'img_active',
+                'img_inactive'
             ])
             ->from('garages')
             ->leftJoin('garages_users', 'garages_users.garage_id = garages.id')
@@ -23,7 +25,9 @@ class UserGarageService extends UserServiceBase
                 'garages.id',
                 'name',
                 'description',
-                'has_garage'
+                'has_garage',
+                'img_active',
+                'img_inactive'
             ])
             ->all();
     }
