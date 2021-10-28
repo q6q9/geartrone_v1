@@ -90,7 +90,7 @@ class CarsController extends Controller
         $tron = new Tron($apiUrl, $apiUrl, $apiUrl);
 
         $result = $tron->sendRawTransaction(json_decode($signedTransaction, true));
-        if (!isset($result['result']) or !$result['result'] != true) {
+        if (!(isset($result['result']) && $result['result'] === true)) {
             return Helper::getResponse(null, $result, '400');
         }
 
