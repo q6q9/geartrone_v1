@@ -73,8 +73,8 @@ class UserCarService extends UserServiceBase
                 'brake',
                 "IF (cars_users.user_id = {$this->user->id}, brake_bonus, null) as 'brake_bonus'",
                 "(cars_users.user_id = {$this->user->id} and cars_users.user_id IS NOT NULL) as 'has_car'",
-                'img_active',
-                'img_inactive'
+                'cars.img_active',
+                'cars.img_inactive'
             ])
             ->from('cars')
             ->innerJoin('garages', 'cars.garage_id = garages.id')
